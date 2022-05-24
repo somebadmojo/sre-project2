@@ -67,9 +67,9 @@ VPCs have IPs in multiple availability zones.
 
 Application load balancer deployed in each region for the web servers.
 
-2x RDS clusters, one in each region.  
+2x RDS clusters, one in each region. 
 
-Each RDS cluster will have primary/secondary nodes deployed to separate AZs.
+Each RDS cluster will have primary/secondary nodes deployed to same region, but separate AZs.
 
 5 day retention for RDS backups.
 
