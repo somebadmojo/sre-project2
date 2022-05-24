@@ -56,15 +56,25 @@ aws ec2 describe-availability-zones --region us-east-2
 
 ### Descriptions
 Assets to be deployed to primary and secondary regions.
+
 2x S3 buckets. One in each region.
+
 3x ubuntu EC2 instances for web in each region.
+
 2x nodes per kubernetes cluster in each region, prometheus/grafana installed.
+
 VPCs have IPs in multiple availability zones.
+
 Application load balancer deployed in each region for the web servers.
+
 2x RDS clusters, one in each region.  
+
 Each RDS cluster will have primary/secondary nodes deployed to separate AZs.
+
 5 day retention for RDS backups.
+
 RDS Region 1 will replicate to Region 2
+
 
 ## DR Plan
 ### Pre-Steps:
