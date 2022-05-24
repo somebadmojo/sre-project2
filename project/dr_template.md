@@ -52,7 +52,7 @@ aws ec2 describe-availability-zones --region us-east-2
 | EC2 Instance | Web server | t3.micro | 6 | 3 deployed to pri region, 3 deployed to sec region |
 | EKS cluster | Observability with Prometheus Grafana | t3.medium | 4 | 2 clusters of 2 nodes each, deployed to pri and sec regions. |
 | RDS cluster | Database | db.t2.small | 4 | cluster in pri region replicated to sec region, 5 day backup retention | 
-| S3 bucket | Data store for terraform code and RDS backups | na | 2 | one bucket each in pri and sec regions |
+| S3 bucket | Data store for terraform code | na | 2 | one bucket each in pri and sec regions |
 
 ### Descriptions
 Assets to be deployed to primary and secondary regions.
