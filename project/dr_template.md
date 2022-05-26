@@ -53,6 +53,8 @@ aws ec2 describe-availability-zones --region us-east-2
 | EKS cluster | Observability with Prometheus Grafana | t3.medium | 4 | 2 clusters of 2 nodes each, deployed to pri and sec regions. |
 | RDS cluster | Database | db.t2.small | 4 | cluster in pri region replicated to sec region, 5 day backup retention | 
 | S3 bucket | Data store for terraform code | na | 2 | one bucket each in pri and sec regions |
+| Application Load Balancer (ALB) | Load Balancing for the web front end | 2 | 1 ALB per region servicing all the AZs in the region.
+| Multi-AZ VPCs | Virtual Private Cloud, distributed flat networks across mult AZs. | 2 | 1 VPC per Region providing network services to all AZs.
 
 ### Descriptions
 Assets to be deployed to primary and secondary regions.
@@ -78,8 +80,9 @@ RDS Region 1 will replicate to Region 2
 
 ## DR Plan
 ### Pre-Steps:
-1) There needs to be continuous audit that the secondary location is functional and configured identically to the primary location.  This can be performed using any tool like ansible, chef, puppet, terraform.  Any config drift should be flagged and remediated immediately upon detection.
-2) Create service monitors and synthetics to continuously monitor functionality of the secondary infrastructure.  Otherwise you're gambling on failing over to a possibly broken site.
+1) A full infrastructure stack will be deployed to both the primary and secondary regions.  Configuration should be near identical as they're designed to service identical workload.
+2) There needs to be continuous audit that the secondary location is functional and configured identically to the primary location.  This can be performed using any tool like ansible, chef, puppet, terraform.  Any config drift should be flagged and remediated immediately upon detection.
+3) Create service monitors and synthetics to continuously monitor functionality of the secondary infrastructure.  Otherwise you're gambling on failing over to a possibly broken site.
 
 ## Steps:
 You won't actually perform these steps, but write out what you would do to "fail-over" your application and database cluster to the other region. Think about all the pieces that were setup and how you would use those in the other region
